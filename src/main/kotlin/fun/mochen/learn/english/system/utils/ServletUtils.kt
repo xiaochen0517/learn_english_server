@@ -1,7 +1,7 @@
 package `fun`.mochen.learn.english.system.utils
 
 import cn.hutool.core.convert.Convert
-import `fun`.mochen.learn.english.common.utils.StrUtil
+import `fun`.mochen.learn.english.core.common.utils.StrUtil
 import `fun`.mochen.learn.english.constant.BaseConstants
 import org.apache.commons.lang3.StringUtils
 import org.springframework.web.context.request.RequestContextHolder

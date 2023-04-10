@@ -1,7 +1,7 @@
 package `fun`.mochen.learn.english.system.interceptor
 
 import com.alibaba.fastjson2.JSON
-import `fun`.mochen.learn.english.common.annotation.RepeatSubmit
+import `fun`.mochen.learn.english.core.common.annotation.RepeatSubmit
 import `fun`.mochen.learn.english.core.domain.AjaxResult
 import `fun`.mochen.learn.english.system.utils.ServletUtils
 import org.springframework.stereotype.Component
@@ -29,7 +29,7 @@ abstract class RepeatSubmitInterceptor: HandlerInterceptor {
     }
 
     /**
-     * 验证是否重复提交由子类实现具体的防重复提交的规则
+     * 验证是否重复提交由子类实现具体防重复提交的规则
      *
      * @param request
      * @return

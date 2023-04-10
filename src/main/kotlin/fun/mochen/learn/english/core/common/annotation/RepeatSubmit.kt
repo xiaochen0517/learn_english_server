@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.common.annotation
+package `fun`.mochen.learn.english.core.common.annotation
 
 import java.lang.annotation.Inherited
 

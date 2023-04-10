@@ -1,7 +1,7 @@
 package `fun`.mochen.learn.english.system.properties
 
-import `fun`.mochen.learn.english.common.annotation.Anonymous
-import `fun`.mochen.learn.english.common.utils.StrUtil
+import `fun`.mochen.learn.english.core.common.annotation.Anonymous
+import `fun`.mochen.learn.english.core.common.utils.StrUtil
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.context.ApplicationContext
 import org.springframework.context.ApplicationContextAware

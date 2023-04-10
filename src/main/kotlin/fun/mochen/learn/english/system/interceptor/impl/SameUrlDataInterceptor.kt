@@ -1,6 +1,6 @@
 package `fun`.mochen.learn.english.system.interceptor.impl
 
-import `fun`.mochen.learn.english.common.annotation.RepeatSubmit
+import `fun`.mochen.learn.english.core.common.annotation.RepeatSubmit
 import `fun`.mochen.learn.english.system.interceptor.RepeatSubmitInterceptor
 import `fun`.mochen.learn.english.system.redis.RedisCache
 import org.springframework.beans.factory.annotation.Autowired

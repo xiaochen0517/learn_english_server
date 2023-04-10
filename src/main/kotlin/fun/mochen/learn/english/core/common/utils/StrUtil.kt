@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.common.utils
+package `fun`.mochen.learn.english.core.common.utils
 
 import java.util.regex.Pattern
 
