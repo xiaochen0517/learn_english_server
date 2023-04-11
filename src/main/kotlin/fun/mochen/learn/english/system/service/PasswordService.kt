@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.web.service
+package `fun`.mochen.learn.english.system.service
 
 import `fun`.mochen.learn.english.constant.CacheConstants
 import `fun`.mochen.learn.english.entity.User
@@ -42,7 +42,7 @@ class PasswordService {
         val usernamePasswordAuthenticationToken: Authentication = AuthenticationContextHolder.getContext()
         val username = usernamePasswordAuthenticationToken.name
         val password = usernamePasswordAuthenticationToken.credentials.toString()
-        var retryCount = 0;
+        var retryCount = 0
         try {
             retryCount = redisCache.getCacheObject(getCacheKey(username))
         } catch (exception: Exception) {

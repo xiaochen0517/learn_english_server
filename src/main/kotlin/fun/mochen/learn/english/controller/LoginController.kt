@@ -2,7 +2,7 @@ package `fun`.mochen.learn.english.controller
 
 import `fun`.mochen.learn.english.core.domain.AjaxResult
 import `fun`.mochen.learn.english.core.domain.model.LoginBody
-import `fun`.mochen.learn.english.web.service.LoginService
+import `fun`.mochen.learn.english.system.service.LoginService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

@@ -1,7 +1,7 @@
 package `fun`.mochen.learn.english.system.security.filter
 
 import `fun`.mochen.learn.english.core.domain.model.LoginUser
-import `fun`.mochen.learn.english.web.service.TokenService
+import `fun`.mochen.learn.english.system.service.TokenService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder

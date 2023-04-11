@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.web.service
+package `fun`.mochen.learn.english.system.service
 
 import cn.hutool.core.util.IdUtil
 import cn.hutool.core.util.StrUtil
@@ -57,15 +57,14 @@ class TokenService {
     fun getLoginUser(request: HttpServletRequest): LoginUser? {
         // 获取请求携带的令牌
         val token = getToken(request)
-        if (StrUtil.isNotEmpty(token)) {
-            try {
-                val claims: Claims = parseToken(token)
-                // 解析对应的权限以及用户信息
-                val uuid = claims[BaseConstants.LOGIN_USER_KEY] as String
-                val userKey = getTokenKey(uuid)
-                return redisCache.getCacheObject(userKey)
-            } catch (e: Exception) {
-            }
+        if (StrUtil.isNotEmpty(token)) try {
+            val claims: Claims = parseToken(token)
+            // 解析对应的权限以及用户信息
+            val uuid = claims[BaseConstants.LOGIN_USER_KEY] as String
+            val userKey = getTokenKey(uuid)
+            return redisCache.getCacheObject(userKey)
+        } catch (_: Exception) {
+            // ignore
         }
         return null
     }

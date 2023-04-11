@@ -4,7 +4,7 @@ import `fun`.mochen.learn.english.core.domain.model.LoginUser
 import `fun`.mochen.learn.english.entity.User
 import `fun`.mochen.learn.english.service.user.UserService
 import `fun`.mochen.learn.english.system.exception.ServiceException
-import `fun`.mochen.learn.english.web.service.PasswordService
+import `fun`.mochen.learn.english.system.service.PasswordService
 import lombok.extern.slf4j.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.UserDetails

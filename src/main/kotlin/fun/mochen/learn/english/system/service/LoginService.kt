@@ -1,10 +1,9 @@
-package `fun`.mochen.learn.english.web.service
+package `fun`.mochen.learn.english.system.service
 
 import cn.hutool.core.util.StrUtil
 import `fun`.mochen.learn.english.constant.UserConstants
 import `fun`.mochen.learn.english.core.domain.model.LoginUser
 import `fun`.mochen.learn.english.service.user.UserService
-import `fun`.mochen.learn.english.system.exception.ServiceException
 import `fun`.mochen.learn.english.system.exception.user.UserNotExistsException
 import `fun`.mochen.learn.english.system.exception.user.UserPasswordNotMatchException
 import `fun`.mochen.learn.english.system.redis.RedisCache
@@ -26,20 +25,13 @@ class LoginService {
     @Resource
     private lateinit var authenticationManager: AuthenticationManager
 
-    @Autowired
-    private lateinit var redisCache: RedisCache
-
-    @Autowired
-    private lateinit var userService: UserService
-
     fun login(username: String, password: String, code: String?, uuid: String?): String {
         // 验证码校验
         validateCaptcha(username, code, uuid)
         // 登录前置校验
         loginPreCheck(username, password)
         // 用户验证
-        var authentication: Authentication? = null
-        authentication = try {
+        val authentication: Authentication? = try {
             val authenticationToken = UsernamePasswordAuthenticationToken(username, password)
             AuthenticationContextHolder.setContext(authenticationToken)
             // 该方法会去调用UserDetailsServiceImpl.loadUserByUsername

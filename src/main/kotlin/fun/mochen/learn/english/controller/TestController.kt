@@ -1,6 +1,6 @@
 package `fun`.mochen.learn.english.controller
 
-import `fun`.mochen.learn.english.entity.TestTable
+import `fun`.mochen.learn.english.core.domain.AjaxResult
 import `fun`.mochen.learn.english.service.TestService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
@@ -14,7 +14,7 @@ class TestController {
     private lateinit var testService: TestService
 
     @RequestMapping("/get")
-    fun getTest(): List<TestTable> {
-        return testService.getTest()
+    fun getTest(): AjaxResult {
+        return AjaxResult.success(testService.getTest())
     }
 }

@@ -4,7 +4,7 @@ import com.alibaba.fastjson2.JSON
 import `fun`.mochen.learn.english.core.domain.AjaxResult
 import `fun`.mochen.learn.english.core.domain.model.LoginUser
 import `fun`.mochen.learn.english.system.utils.ServletUtils
-import `fun`.mochen.learn.english.web.service.TokenService
+import `fun`.mochen.learn.english.system.service.TokenService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.core.Authentication
