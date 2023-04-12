@@ -190,7 +190,7 @@ class TokenService {
      * @param request
      * @return token
      */
-    private fun getToken(request: HttpServletRequest): String {
+    fun getToken(request: HttpServletRequest): String {
         var token = request.getHeader(header)
         if (StringUtils.isNotEmpty(token) && token.startsWith(BaseConstants.TOKEN_PREFIX)) {
             token = token.replace(BaseConstants.TOKEN_PREFIX, "")

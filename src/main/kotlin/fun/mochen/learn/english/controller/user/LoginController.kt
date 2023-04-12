@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.controller
+package `fun`.mochen.learn.english.controller.user
 
 import `fun`.mochen.learn.english.core.domain.AjaxResult
 import `fun`.mochen.learn.english.core.domain.model.LoginBody
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
+import javax.servlet.http.HttpServletRequest
 
 @RestController
 class LoginController {
@@ -22,10 +23,14 @@ class LoginController {
      */
     @PostMapping("/login")
     fun login(@RequestBody loginBody: LoginBody): AjaxResult {
-        val ajax: AjaxResult = AjaxResult.success()
         // 生成令牌
         val token: String = loginService.login(loginBody.username, loginBody.password, loginBody.code, loginBody.uuid)
-        ajax.data = token
-        return ajax
+        return AjaxResult.success("登录成功", token)
     }
+
+    @PostMapping("/refreshToken")
+    fun refreshToken(): AjaxResult {
+        return AjaxResult.success("刷新成功")
+    }
+
 }

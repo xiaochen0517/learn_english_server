@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.controller
+package `fun`.mochen.learn.english.controller.user
 
 import `fun`.mochen.learn.english.core.domain.AjaxResult
 import `fun`.mochen.learn.english.service.TestService

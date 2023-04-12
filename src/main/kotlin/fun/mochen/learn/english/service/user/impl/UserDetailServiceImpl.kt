@@ -3,7 +3,8 @@ package `fun`.mochen.learn.english.service.user.impl
 import `fun`.mochen.learn.english.core.domain.model.LoginUser
 import `fun`.mochen.learn.english.entity.User
 import `fun`.mochen.learn.english.service.user.UserService
-import `fun`.mochen.learn.english.system.exception.ServiceException
+import `fun`.mochen.learn.english.system.exception.service.ServiceException
+import `fun`.mochen.learn.english.system.exception.user.UserNotExistsException
 import `fun`.mochen.learn.english.system.service.PasswordService
 import lombok.extern.slf4j.Slf4j
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,7 +30,7 @@ class UserDetailServiceImpl : UserDetailsService {
         val user = userService.selectUserByUsername(username ?: "")
         if (user == null) {
             log.info("登录用户：{} 不存在.", username)
-            throw ServiceException("登录用户：$username 不存在")
+            throw UserNotExistsException()
         }
         passwordService.validate(user)
         return createLoginUser(user)

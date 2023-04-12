@@ -2,7 +2,8 @@ package `fun`.mochen.learn.english.system.utils
 
 import `fun`.mochen.learn.english.constant.HttpStatus
 import `fun`.mochen.learn.english.core.domain.model.LoginUser
-import `fun`.mochen.learn.english.system.exception.ServiceException
+import `fun`.mochen.learn.english.system.exception.service.ServiceException
+import `fun`.mochen.learn.english.system.exception.service.TokenServiceException
 import org.springframework.security.core.Authentication
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -21,7 +22,7 @@ class SecurityUtils {
             return try {
                 getLoginUser().userId
             } catch (e: Exception) {
-                throw ServiceException("获取用户ID异常", HttpStatus.UNAUTHORIZED)
+                throw TokenServiceException(HttpStatus.UNAUTHORIZED, "获取用户ID异常")
             }
         }
 
@@ -33,7 +34,7 @@ class SecurityUtils {
             return try {
                 getLoginUser().getUsername()
             } catch (e: Exception) {
-                throw ServiceException("获取用户账户异常", HttpStatus.UNAUTHORIZED)
+                throw TokenServiceException(HttpStatus.UNAUTHORIZED, "获取用户账户异常")
             }
         }
 
@@ -45,7 +46,7 @@ class SecurityUtils {
             return try {
                 getAuthentication().principal as LoginUser
             } catch (e: Exception) {
-                throw ServiceException("获取用户信息异常", HttpStatus.UNAUTHORIZED)
+                throw TokenServiceException(HttpStatus.UNAUTHORIZED, "获取用户信息异常")
             }
         }
 

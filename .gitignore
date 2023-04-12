@@ -38,3 +38,6 @@ out/
 
 ### rebel.xml ###
 **/rebel.xml
+
+### local configuration files ###
+**/application-local.yml

@@ -1,9 +1,12 @@
 package `fun`.mochen.learn.english.system.service
 
 import cn.hutool.core.util.StrUtil
+import `fun`.mochen.learn.english.constant.CacheConstants
 import `fun`.mochen.learn.english.constant.UserConstants
 import `fun`.mochen.learn.english.core.domain.model.LoginUser
 import `fun`.mochen.learn.english.service.user.UserService
+import `fun`.mochen.learn.english.system.exception.user.CaptchaException
+import `fun`.mochen.learn.english.system.exception.user.CaptchaExpireException
 import `fun`.mochen.learn.english.system.exception.user.UserNotExistsException
 import `fun`.mochen.learn.english.system.exception.user.UserPasswordNotMatchException
 import `fun`.mochen.learn.english.system.redis.RedisCache
@@ -15,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Component
 import javax.annotation.Resource
+import javax.servlet.http.HttpServletRequest
 
 @Component
 class LoginService {
@@ -25,9 +29,12 @@ class LoginService {
     @Resource
     private lateinit var authenticationManager: AuthenticationManager
 
+    @Autowired
+    private lateinit var redisCache: RedisCache
+
     fun login(username: String, password: String, code: String?, uuid: String?): String {
         // 验证码校验
-        validateCaptcha(username, code, uuid)
+//        validateCaptcha(username, code, uuid)
         // 登录前置校验
         loginPreCheck(username, password)
         // 用户验证
@@ -61,31 +68,18 @@ class LoginService {
      */
     fun validateCaptcha(username: String, code: String?, uuid: String?) {
 //        val captchaEnabled: Boolean = configService.selectCaptchaEnabled()
-//        if (captchaEnabled) {
-//            val verifyKey: String = CacheConstants.CAPTCHA_CODE_KEY + StringUtils.nvl(uuid, "")
-//            val captcha: String = redisCache.getCacheObject(verifyKey)
-//            redisCache.deleteObject(verifyKey)
-//            if (captcha == null) {
-//                AsyncManager.me().execute(
-//                    AsyncFactory.recordLogininfor(
-//                        username,
-//                        Constants.LOGIN_FAIL,
-//                        MessageUtils.message("user.jcaptcha.expire")
-//                    )
-//                )
-//                throw CaptchaExpireException()
-//            }
-//            if (!code.equals(captcha, ignoreCase = true)) {
-//                AsyncManager.me().execute(
-//                    AsyncFactory.recordLogininfor(
-//                        username,
-//                        Constants.LOGIN_FAIL,
-//                        MessageUtils.message("user.jcaptcha.error")
-//                    )
-//                )
-//                throw CaptchaException()
-//            }
-//        }
+        val captchaEnabled: Boolean = false
+        if (captchaEnabled) {
+            val verifyKey: String = CacheConstants.CAPTCHA_CODE_KEY + (uuid ?: "")
+            val captcha: String = redisCache.getCacheObject(verifyKey)
+            redisCache.deleteObject(verifyKey)
+            if (captcha == null) {
+                throw CaptchaExpireException()
+            }
+            if (!code.equals(captcha, ignoreCase = true)) {
+                throw CaptchaException()
+            }
+        }
     }
 
     /**
@@ -96,53 +90,20 @@ class LoginService {
     fun loginPreCheck(username: String, password: String) {
         // 用户名或密码为空 错误
         if (StrUtil.isEmpty(username) || StrUtil.isEmpty(password)) {
-//            AsyncManager.me().execute(
-//                AsyncFactory.recordLoginInfo(
-//                    username,
-//                    BaseConstants.LOGIN_FAIL,
-//                    MessageUtils.message("not.null")
-//                )
-//            )
             throw UserNotExistsException()
         }
         // 密码如果不在指定范围内 错误
         if (password.length < UserConstants.PASSWORD_MIN_LENGTH
             || password.length > UserConstants.PASSWORD_MAX_LENGTH
         ) {
-//            AsyncManager.me().execute(
-//                AsyncFactory.recordLoginInfo(
-//                    username,
-//                    BaseConstants.LOGIN_FAIL,
-//                    MessageUtils.message("user.password.not.match")
-//                )
-//            )
             throw UserPasswordNotMatchException()
         }
         // 用户名不在指定范围内 错误
         if (username.length < UserConstants.USERNAME_MIN_LENGTH
             || username.length > UserConstants.USERNAME_MAX_LENGTH
         ) {
-//            AsyncManager.me().execute(
-//                AsyncFactory.recordLoginInfo(
-//                    username,
-//                    BaseConstants.LOGIN_FAIL,
-//                    MessageUtils.message("user.password.not.match")
-//                )
-//            )
             throw UserPasswordNotMatchException()
         }
-        // IP黑名单校验
-//        val blackStr: String = configService.selectConfigByKey("sys.login.blackIPList")
-//        if (IpUtils.isMatchedIp(blackStr, IpUtils.getIpAddr())) {
-//            AsyncManager.me().execute(
-//                AsyncFactory.recordLoginInfo(
-//                    username,
-//                    Constants.LOGIN_FAIL,
-//                    MessageUtils.message("login.blocked")
-//                )
-//            )
-//            throw BlackListException()
-//        }
     }
 
     /**
