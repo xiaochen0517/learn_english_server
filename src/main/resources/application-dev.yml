@@ -32,5 +32,13 @@ user:
 # 词典配置
 dict:
   youdao:
+    api-url: https://openapi.youdao.com/api
     app-id: xxx
     app-key: xxx
+
+# OpenAi 配置
+openai:
+  prompt: "请充当一名翻译官，根据给出的英文单词，生成3个简单例句，包含中文翻译。生成格式为json，具体格式如下：[{\"en\":\"xxx\",\"zh\":\"xxx\"},{\"en\":\"xxx\",\"zh\":\"xxx\"}]除此之外不需要任何内容。"
+  api-url: https://api.openai.com/v1/chat/completions
+  api-key: sk-xxx
+  model: gpt-3.5-turbo

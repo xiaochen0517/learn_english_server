@@ -77,17 +77,27 @@ class SecurityConfig {
             registry.antMatchers(url).permitAll()
         }
 
-        httpSecurity // CSRF禁用，因为不使用session
-            .csrf().disable() // 禁用HTTP响应标头
-            .headers().cacheControl().disable().and() // 认证失败处理类
-            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and() // 基于token，所以不需要session
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // 过滤请求
-            .authorizeRequests() // 对于登录login 注册register 验证码captchaImage 允许匿名访问
-            .antMatchers("/login", "/register", "/captchaImage").permitAll() // 静态资源，可匿名访问
+        httpSecurity
+            // CSRF禁用，因为不使用session
+            .csrf().disable()
+            // 禁用HTTP响应标头
+            .headers().cacheControl().disable().and()
+            // 认证失败处理类
+            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+            // 基于token，所以不需要session
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+            // 过滤请求
+            .authorizeRequests()
+            // 对于登录login 注册register 验证码captchaImage 允许匿名访问
+            .antMatchers("/login", "/register", "/captchaImage").permitAll()
+            // 静态资源，可匿名访问
             .antMatchers(HttpMethod.GET, "/", "/*.html", "/**/*.html", "/**/*.css", "/**/*.js", "/profile/**")
             .permitAll()
+            // 文档地址，可匿名访问
             .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/webjars/**", "/*/api-docs", "/druid/**")
-            .permitAll() // 除上面外的所有请求全部需要鉴权认证
+            .permitAll()
+            // 测试地址，可匿名访问
+            .antMatchers("/test/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .headers().frameOptions().disable()
