@@ -70,7 +70,8 @@ dependencies {
     implementation 'eu.bitwalker:UserAgentUtils:1.21'
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
-
+    // https://mvnrepository.com/artifact/com.jayway.jsonpath/json-path
+    implementation("com.jayway.jsonpath:json-path:2.8.0")
 }
 
 tasks.withType(KotlinCompile) {

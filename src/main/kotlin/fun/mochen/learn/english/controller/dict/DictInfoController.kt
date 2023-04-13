@@ -17,8 +17,7 @@ class DictInfoController {
 
     @GetMapping("/query/word")
     fun queryWordInfo(word: String): AjaxResult {
-
-        return AjaxResult.success("查询成功", JSON.parse(dictInfoService.queryWordInfo(word)))
+        return AjaxResult.success("查询成功", dictInfoService.queryWordInfo(word))
     }
 
 }
