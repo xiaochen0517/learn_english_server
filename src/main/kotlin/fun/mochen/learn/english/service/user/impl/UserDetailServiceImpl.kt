@@ -4,6 +4,7 @@ import `fun`.mochen.learn.english.core.domain.model.LoginUser
 import `fun`.mochen.learn.english.entity.User
 import `fun`.mochen.learn.english.service.user.UserService
 import `fun`.mochen.learn.english.system.exception.service.ServiceException
+import `fun`.mochen.learn.english.system.exception.user.UserHasBeenDisabledException
 import `fun`.mochen.learn.english.system.exception.user.UserNotExistsException
 import `fun`.mochen.learn.english.system.service.PasswordService
 import lombok.extern.slf4j.Slf4j
@@ -31,6 +32,10 @@ class UserDetailServiceImpl : UserDetailsService {
         if (user == null) {
             log.info("登录用户：{} 不存在.", username)
             throw UserNotExistsException()
+        }
+        if (user.status != 0) {
+            log.info("登录用户：{} 已被禁用.", username)
+            throw UserHasBeenDisabledException()
         }
         passwordService.validate(user)
         return createLoginUser(user)

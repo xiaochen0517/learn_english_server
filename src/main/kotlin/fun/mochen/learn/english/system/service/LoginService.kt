@@ -34,7 +34,7 @@ class LoginService {
 
     fun login(username: String, password: String, code: String?, uuid: String?): String {
         // 验证码校验
-//        validateCaptcha(username, code, uuid)
+        // validateCaptcha(username, code, uuid)
         // 登录前置校验
         loginPreCheck(username, password)
         // 用户验证

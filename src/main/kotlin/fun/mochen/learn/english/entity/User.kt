@@ -20,4 +20,6 @@ class User: BaseEntity() {
 
     var password: String? = null
 
+    var status: Int = 0
+
 }
