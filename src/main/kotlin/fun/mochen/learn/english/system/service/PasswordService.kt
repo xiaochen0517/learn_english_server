@@ -1,7 +1,7 @@
 package `fun`.mochen.learn.english.system.service
 
 import `fun`.mochen.learn.english.constant.CacheConstants
-import `fun`.mochen.learn.english.entity.User
+import `fun`.mochen.learn.english.entity.user.User
 import `fun`.mochen.learn.english.system.exception.user.UserPasswordNotMatchException
 import `fun`.mochen.learn.english.system.exception.user.UserPasswordRetryLimitExceedException
 import `fun`.mochen.learn.english.system.redis.RedisCache

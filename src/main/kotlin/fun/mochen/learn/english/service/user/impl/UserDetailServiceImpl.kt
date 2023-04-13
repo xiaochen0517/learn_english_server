@@ -1,9 +1,8 @@
 package `fun`.mochen.learn.english.service.user.impl
 
 import `fun`.mochen.learn.english.core.domain.model.LoginUser
-import `fun`.mochen.learn.english.entity.User
+import `fun`.mochen.learn.english.entity.user.User
 import `fun`.mochen.learn.english.service.user.UserService
-import `fun`.mochen.learn.english.system.exception.service.ServiceException
 import `fun`.mochen.learn.english.system.exception.user.UserHasBeenDisabledException
 import `fun`.mochen.learn.english.system.exception.user.UserNotExistsException
 import `fun`.mochen.learn.english.system.service.PasswordService

@@ -1,6 +1,7 @@
 package `fun`.mochen.learn.english.core.domain.dict
 
 data class WordInfo(
+    val id: Long? = null,
     // 查询内容
     val word: String,
     // 音标
@@ -9,8 +10,6 @@ data class WordInfo(
     val voice: WordVoice,
     // 解释
     val explains: List<String>,
-    // 例句
-    val exampleSentences: List<WordExampleSentence>? = null,
     // 派生词
-    val derivedForms: List<WordDerivedForms>? = null,
+    val derivedForms: List<WordDerivedForms?> = emptyList(),
 )

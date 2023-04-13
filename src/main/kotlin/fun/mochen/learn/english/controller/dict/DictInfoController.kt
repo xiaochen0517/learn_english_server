@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import javax.servlet.http.HttpServletRequest
 
 @RestController
 @RequestMapping("/dict")
@@ -16,8 +17,8 @@ class DictInfoController {
     private lateinit var dictInfoService: DictInfoService
 
     @GetMapping("/query/word")
-    fun queryWordInfo(word: String): AjaxResult {
-        return AjaxResult.success("查询成功", dictInfoService.queryWordInfo(word))
+    fun queryWordInfo(word: String, request: HttpServletRequest): AjaxResult {
+        return AjaxResult.success("查询成功", dictInfoService.queryWordInfo(word, request))
     }
 
 }

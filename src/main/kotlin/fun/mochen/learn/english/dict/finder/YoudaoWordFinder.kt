@@ -8,6 +8,7 @@ import `fun`.mochen.learn.english.core.domain.dict.*
 import `fun`.mochen.learn.english.system.exception.service.query.QueryErrorException
 import `fun`.mochen.learn.english.system.exception.service.query.QueryNullException
 import `fun`.mochen.learn.english.system.utils.HttpUtils
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
@@ -19,6 +20,8 @@ import java.time.Instant
 class YoudaoWordFinder : WordFinder {
 
     companion object {
+
+        private val log = LoggerFactory.getLogger(YoudaoWordFinder::class.java)
 
         private const val WORD_KEY = "q"
 
@@ -132,7 +135,12 @@ class YoudaoWordFinder : WordFinder {
     }
 
     private fun getWordDerivedForms(jsonPathParse: DocumentContext): List<WordDerivedForms> {
-        val derivedFormsList = jsonPathParse.read<List<Map<String, String>>>("$.basic.wfs..wf")
-        return derivedFormsList.map { WordDerivedForms(it["name"] ?: "", it["value"] ?: "") }
+        try {
+            val derivedFormsList = jsonPathParse.read<List<Map<String, String>>>("$.basic.wfs..wf")
+            return derivedFormsList.map { WordDerivedForms(it["name"] ?: "", it["value"] ?: "") }
+        }catch (e: Exception){
+            log.error("解析派生词失败", e)
+            return emptyList()
+        }
     }
 }

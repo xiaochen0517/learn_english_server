@@ -1,7 +1,7 @@
 package `fun`.mochen.learn.english.service.user.impl
 
-import `fun`.mochen.learn.english.entity.User
-import `fun`.mochen.learn.english.mapper.UserMapper
+import `fun`.mochen.learn.english.entity.user.User
+import `fun`.mochen.learn.english.mapper.user.UserMapper
 import `fun`.mochen.learn.english.service.user.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
