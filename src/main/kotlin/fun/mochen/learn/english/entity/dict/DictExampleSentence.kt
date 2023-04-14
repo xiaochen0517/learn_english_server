@@ -1,18 +1,18 @@
-package `fun`.mochen.learn.english.entity.user
+package `fun`.mochen.learn.english.entity.dict
 
 import com.baomidou.mybatisplus.annotation.IdType
 import com.baomidou.mybatisplus.annotation.TableId
 import `fun`.mochen.learn.english.entity.BaseEntity
 
-class User : BaseEntity() {
+class DictExampleSentence : BaseEntity() {
 
     @TableId(type = IdType.AUTO)
     var id: Long? = null
 
-    var username: String? = null
+    var wordId: Long? = null
 
-    var password: String? = null
+    var en: String? = null
 
-    var status: Int = 0
+    var zh: String? = null
 
 }

@@ -1,9 +1,10 @@
 package `fun`.mochen.learn.english.core.common.utils
 
 import java.util.regex.Pattern
+import cn.hutool.core.util.StrUtil as HutoolStrUtil
 
-class StrUtil : cn.hutool.core.util.StrUtil() {
-    companion object {
+open class StrUtil {
+    companion object : HutoolStrUtil() {
 
         @JvmStatic
         fun replaceAll(text: String, regex: Pattern, replacement: String): String {
@@ -25,6 +26,18 @@ class StrUtil : cn.hutool.core.util.StrUtil() {
                 }
             }
             return false
+        }
+
+        @JvmStatic
+        fun isWord(word: String): Boolean {
+            return word.matches(Regex("[a-zA-Z]+"))
+        }
+
+        @JvmStatic
+        fun checkWord(word: String) {
+            if (!isWord(word)) {
+                throw IllegalArgumentException("param is not a word, param: $word")
+            }
         }
     }
 }

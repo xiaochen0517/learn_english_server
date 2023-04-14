@@ -5,7 +5,7 @@ import `fun`.mochen.learn.english.entity.user.User
 import org.springframework.stereotype.Repository
 
 @Repository
-interface UserMapper: BaseMapper<User> {
+interface UserMapper : BaseMapper<User> {
     fun selectOneByUsername(username: String): User
 
 }

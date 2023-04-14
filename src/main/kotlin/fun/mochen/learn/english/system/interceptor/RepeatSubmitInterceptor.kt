@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
 @Component
-abstract class RepeatSubmitInterceptor: HandlerInterceptor {
+abstract class RepeatSubmitInterceptor : HandlerInterceptor {
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, handler: Any): Boolean {
         return if (handler is HandlerMethod) {

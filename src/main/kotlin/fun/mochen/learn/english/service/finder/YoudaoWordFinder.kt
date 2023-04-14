@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.dict.finder
+package `fun`.mochen.learn.english.service.finder
 
 import cn.hutool.core.util.IdUtil
 import cn.hutool.crypto.SecureUtil
@@ -138,7 +138,7 @@ class YoudaoWordFinder : WordFinder {
         try {
             val derivedFormsList = jsonPathParse.read<List<Map<String, String>>>("$.basic.wfs..wf")
             return derivedFormsList.map { WordDerivedForms(it["name"] ?: "", it["value"] ?: "") }
-        }catch (e: Exception){
+        } catch (e: Exception) {
             log.error("解析派生词失败", e)
             return emptyList()
         }

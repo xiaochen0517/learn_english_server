@@ -62,16 +62,22 @@ class LoginUser(
 
 
     constructor(user: User?, permissions: Set<String>?)
-            : this(null, "", 0, 0,
-        null, null, null, null, permissions, user) {
+            : this(
+        null, "", 0, 0,
+        null, null, null, null, permissions, user
+    ) {
     }
 
-    constructor(userId: Long, user: User?): this(userId, "", 0, 0,
-        null, null, null, null, null, user)
+    constructor(userId: Long, user: User?) : this(
+        userId, "", 0, 0,
+        null, null, null, null, null, user
+    )
 
     constructor(userId: Long?, user: User?, permissions: Set<String>?)
-            : this(userId, "", 0, 0,
-        null, null, null, null, permissions, user)
+            : this(
+        userId, "", 0, 0,
+        null, null, null, null, permissions, user
+    )
 
     @JSONField(serialize = false)
     override fun getAuthorities(): MutableCollection<out GrantedAuthority>? {

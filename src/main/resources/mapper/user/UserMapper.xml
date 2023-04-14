@@ -3,7 +3,9 @@
 <mapper namespace="fun.mochen.learn.english.mapper.user.UserMapper">
 
     <select id="selectOneByUsername" resultType="fun.mochen.learn.english.entity.user.User">
-        SELECT * FROM `user` WHERE `username` = #{username}
+        SELECT *
+        FROM `user`
+        WHERE `username` = #{username}
     </select>
 
 </mapper>

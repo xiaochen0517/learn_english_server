@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
-class ResourcesConfig: WebMvcConfigurer {
+class ResourcesConfig : WebMvcConfigurer {
 
 
     @Autowired

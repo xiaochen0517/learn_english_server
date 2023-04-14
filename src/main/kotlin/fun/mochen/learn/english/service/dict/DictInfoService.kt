@@ -1,10 +1,15 @@
 package `fun`.mochen.learn.english.service.dict
 
+import com.baomidou.mybatisplus.extension.service.IService
+import `fun`.mochen.learn.english.core.domain.dict.WordExampleSentence
 import `fun`.mochen.learn.english.core.domain.dict.WordInfo
-import javax.servlet.http.HttpServletRequest
+import `fun`.mochen.learn.english.core.domain.dict.WordQueryBody
+import `fun`.mochen.learn.english.entity.dict.DictWordInfo
 
-interface DictInfoService {
+interface DictInfoService : IService<DictWordInfo> {
 
-    fun queryWordInfo(word: String, request: HttpServletRequest): WordInfo
+    fun queryWordInfo(wordQueryBody: WordQueryBody): WordInfo
+
+    fun queryWordExampleSentence(wordQueryBody: WordQueryBody): List<WordExampleSentence>
 
 }

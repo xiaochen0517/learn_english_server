@@ -1,4 +1,4 @@
-package `fun`.mochen.learn.english.dict.finder
+package `fun`.mochen.learn.english.service.finder
 
 import `fun`.mochen.learn.english.core.domain.dict.WordFinderType
 import org.springframework.beans.factory.annotation.Autowired

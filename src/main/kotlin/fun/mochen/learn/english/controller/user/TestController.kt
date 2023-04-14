@@ -1,9 +1,8 @@
 package `fun`.mochen.learn.english.controller.user
 
-import com.alibaba.fastjson.JSON
 import `fun`.mochen.learn.english.core.domain.AjaxResult
-import `fun`.mochen.learn.english.dict.openai.OpenAiService
-import `fun`.mochen.learn.english.service.TestService
+import `fun`.mochen.learn.english.service.openai.OpenAiService
+import `fun`.mochen.learn.english.service.user.TestService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -25,6 +24,6 @@ class TestController {
 
     @RequestMapping("/openai")
     fun openai(word: String): AjaxResult {
-        return AjaxResult.success(JSON.parse(openAiService.queryWordExampleSentence(word)))
+        return AjaxResult.success(openAiService.queryWordExampleSentence(word))
     }
 }

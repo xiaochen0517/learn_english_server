@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 import javax.servlet.http.HttpServletRequest
 
 @Component
-class SameUrlDataInterceptor: RepeatSubmitInterceptor() {
+class SameUrlDataInterceptor : RepeatSubmitInterceptor() {
 
     val REPEAT_PARAMS = "repeatParams"
 

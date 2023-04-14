@@ -6,6 +6,8 @@ import `fun`.mochen.learn.english.system.exception.service.ServiceException
 import org.springframework.web.HttpRequestMethodNotSupportedException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import java.lang.Exception
+import java.security.InvalidParameterException
 import javax.servlet.http.HttpServletRequest
 
 @RestControllerAdvice
@@ -34,9 +36,25 @@ class GlobalExceptionHandler {
      * @param request 请求
      */
     @ExceptionHandler(BaseException::class)
-    fun handleBaseException(exception: BaseException, request: HttpServletRequest?): AjaxResult? {
+    fun handleBaseException(exception: BaseException, request: HttpServletRequest): AjaxResult {
         log.error(exception.message, exception)
         val code: Int = exception.code ?: 500
         return AjaxResult.error(code, exception.message ?: "业务异常")
     }
+
+    @ExceptionHandler(InvalidParameterException::class)
+    fun handleInvalidParameterException(
+        exception: InvalidParameterException,
+        request: HttpServletRequest
+    ): AjaxResult {
+        log.error(exception.message, exception)
+        return AjaxResult.error(400, exception.message ?: "参数异常")
+    }
+
+    @ExceptionHandler(Exception::class)
+    fun handleException(exception: Exception, request: HttpServletRequest): AjaxResult {
+        log.error(exception.message, exception)
+        return AjaxResult.error(500, exception.message ?: "系统异常")
+    }
+
 }

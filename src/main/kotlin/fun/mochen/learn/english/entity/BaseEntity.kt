@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.util.*
 
-open class BaseEntity{
+open class BaseEntity {
 
     @TableField(fill = FieldFill.INSERT)
     var creatorName: String? = null
