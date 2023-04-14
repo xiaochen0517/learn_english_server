@@ -5,7 +5,7 @@
     <select id="selectByWord" resultType="fun.mochen.learn.english.entity.dict.DictWordInfo">
         SELECT *
         FROM `dict_word_info`
-        WHERE `word` = #{word}
+        WHERE LOWER(`word`) = LOWER(#{word})
     </select>
 
 </mapper>

@@ -18,7 +18,7 @@ class DictInfoController {
         return AjaxResult.success("查询成功", dictInfoService.queryWordInfo(word))
     }
 
-    @PutMapping("/query/word/example/sentence")
+    @PutMapping("/query/word/sentence")
     fun queryWordExampleSentence(@RequestBody word: WordQueryBody): AjaxResult {
         return AjaxResult.success("查询成功", dictInfoService.queryWordExampleSentence(word))
     }
