@@ -5,9 +5,9 @@ import java.util.*
 
 open class BaseEntity{
 
-    var createrName: String? = null
+    var creatorName: String? = null
 
-    var createrId: Long? = null
+    var creatorId: Long? = null
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     var createTime: Date? = null
@@ -20,4 +20,5 @@ open class BaseEntity{
     var updateTime: Date? = null
 
     var remark: String? = null
+
 }
