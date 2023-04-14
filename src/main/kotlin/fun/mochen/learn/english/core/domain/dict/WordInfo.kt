@@ -1,7 +1,7 @@
 package `fun`.mochen.learn.english.core.domain.dict
 
 data class WordInfo(
-    val id: Long? = null,
+    var id: Long? = null,
     // 查询内容
     val word: String,
     // 音标
