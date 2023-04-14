@@ -1,13 +1,11 @@
 package `fun`.mochen.learn.english.entity
 
-import org.springframework.data.annotation.Id
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
+import com.baomidou.mybatisplus.annotation.IdType
+import com.baomidou.mybatisplus.annotation.TableId
 
 class TestTable : BaseEntity() {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @TableId(type = IdType.AUTO)
     var id: Long? = null
 
     var name: String? = null
