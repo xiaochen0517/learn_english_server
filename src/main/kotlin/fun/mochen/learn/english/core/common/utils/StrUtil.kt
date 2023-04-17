@@ -30,7 +30,7 @@ open class StrUtil {
 
         @JvmStatic
         fun isWord(word: String): Boolean {
-            return word.matches(Regex("[a-zA-Z]+"))
+            return word.matches(Regex("^[a-zA-Z-]+$"))
         }
 
         @JvmStatic
