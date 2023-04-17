@@ -18,4 +18,4 @@ token:
   # 令牌密钥，长度必须大于等于128个字节
   secret: abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzqwertyuiopas
   # 令牌有效期（默认30分钟）
-  expireTime: 30
+  expireTime: 120
