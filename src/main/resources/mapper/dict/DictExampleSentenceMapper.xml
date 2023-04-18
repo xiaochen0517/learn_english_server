@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fun.mochen.learn.english.mapper.dict.DictExampleSentenceMapper">
 
-    <select id="selectByWordId" resultType="fun.mochen.learn.english.entity.dict.DictExampleSentence">
-        SELECT *
-        FROM dict_example_sentence
-        WHERE word_id = #{wordId}
-    </select>
+	<select id="selectByWordId" resultType="fun.mochen.learn.english.entity.dict.DictExampleSentence">
+		SELECT *
+		FROM dict_example_sentence
+		WHERE word_id = #{wordId}
+	</select>
 
 </mapper>
